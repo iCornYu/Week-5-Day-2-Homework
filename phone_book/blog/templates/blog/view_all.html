@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h1>{{page_title}}</h1>
+    {% for number in phone_number %}
+        <h2>{{ number.phone_number }}</h2>
+        <h4>{{ number.name }}</h4>
+        <h4>{{ number.address }}</h4>
+    {% endfor %}
+
+{% endblock %}
