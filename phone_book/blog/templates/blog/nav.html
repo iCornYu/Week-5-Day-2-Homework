@@ -12,21 +12,25 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'blog-view_all' %}">View All Phone Numbers</a>
           </li>
+          {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'blog-create' %}">Create Entry</a>
           </li>
+          {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'blog-register' %}">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'blog-login' %}">Login</a>
           </li>
-          
+          {% endif %}
         </ul>
-        <span class="nav-link">Hello, {{ request.user }}</span>
+        {% if request.user.is_authenticated %}
+        <span class="nav-link" style='color: rgba(22, 18, 18, 0.575);'>Hello, {{ request.user }}</span>
         <form class="d-flex" action="{% url 'blog-logout' %}">
-          <button class="btn btn-outline-success">Logout</button>
+          <button class="btn btn-primary">Logout</button>
         </form>
+        {% endif %}
       </div>
     </div>
   </nav>
